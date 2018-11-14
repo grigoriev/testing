@@ -22,7 +22,7 @@ public class Parent implements Cloneable, Serializable {
 
     @SuppressWarnings("CloneDoesntCallSuperClone")
     @Override
-    protected Parent clone() throws CloneNotSupportedException {
+    protected Parent clone() {
         return new Parent(
                 new Child1(getChild1().clone()),
                 new Child2(getChild2())

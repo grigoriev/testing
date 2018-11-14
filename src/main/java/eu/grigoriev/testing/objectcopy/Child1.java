@@ -17,7 +17,7 @@ public class Child1 implements Cloneable, Serializable {
 
     @SuppressWarnings("CloneDoesntCallSuperClone")
     @Override
-    protected Child1 clone() throws CloneNotSupportedException {
+    protected Child1 clone() {
         return new Child1(
                 new SubChild1(getSubChild1())
         );
