@@ -7,6 +7,6 @@ public class Singletons {
     public static void main(String[] args) {
         log.info(EagerInitializedSingleton.getInstance().getSomething("EagerInitializedSingleton"));
         log.info(DoubleCheckedLockingSingleton.getInstance().getSomething("DoubleCheckedLockingSingleton"));
-        log.info(SingletonWithHolder.getInstance().getSomething("SingletonWithHolder"));
+        log.info(OnDemandHolderSingleton.getInstance().getSomething("OnDemandHolderSingleton"));
     }
 }

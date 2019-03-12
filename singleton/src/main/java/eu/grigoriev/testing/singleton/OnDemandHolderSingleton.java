@@ -3,17 +3,17 @@ package eu.grigoriev.testing.singleton;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SingletonWithHolder {
+public class OnDemandHolderSingleton {
     private static class Holder {
-        private static final SingletonWithHolder instance = new SingletonWithHolder();
+        private static final OnDemandHolderSingleton INSTANCE = new OnDemandHolderSingleton();
     }
 
-    private SingletonWithHolder() {
+    private OnDemandHolderSingleton() {
         log.info(getClass().getName() + " created");
     }
 
-    public static SingletonWithHolder getInstance() {
-        return Holder.instance;
+    public static OnDemandHolderSingleton getInstance() {
+        return Holder.INSTANCE;
     }
 
     public String getSomething(String someString) {
