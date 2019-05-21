@@ -1,20 +1,27 @@
 package eu.grigoriev.testing.objectcopy;
 
-import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
-import com.carrotsearch.junitbenchmarks.BenchmarkRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@State(Scope.Benchmark)
 public class ObjectCopyTest {
-    @Rule
-    public TestRule benchmarkRun = new BenchmarkRule();
 
-    @BenchmarkOptions(benchmarkRounds = 20000, warmupRounds = 0)
+    @Benchmark
     @Test
     public void deepCopy() throws CloneNotSupportedException {
         Parent parent = new Parent(new Child1(new SubChild1(1)), new Child2(2));
@@ -28,7 +35,7 @@ public class ObjectCopyTest {
         assertNotSame(parent, parentCopy);
     }
 
-    @BenchmarkOptions(benchmarkRounds = 20000, warmupRounds = 0)
+    @Benchmark
     @Test
     public void deepCopyWithSerializationUtils() {
         Parent parent = new Parent(new Child1(new SubChild1(1)), new Child2(2));
@@ -42,7 +49,7 @@ public class ObjectCopyTest {
         assertNotSame(parent, parentCopy);
     }
 
-    @BenchmarkOptions(benchmarkRounds = 20000, warmupRounds = 0)
+    @Benchmark
     @Test
     public void shallowCopy() {
         Parent parent = new Parent(new Child1(new SubChild1(1)), new Child2(2));
