@@ -19,6 +19,8 @@
         <module>plugin/plugin2</module>
 
         <module>singleton</module>
+
+        <module>webservice</module>
     </modules>
 
     <build>
