@@ -20,6 +20,9 @@
 
         <module>singleton</module>
 
+        <module>sockets/client</module>
+        <module>sockets/server</module>
+
         <module>webservice</module>
     </modules>
 
