@@ -32,11 +32,15 @@ public class EchoSocketClient {
     }
 
     public static void main(String[] args) throws IOException {
+        long startAllAll = System.currentTimeMillis();
+
         EchoSocketClient client = new EchoSocketClient();
 
+        long startAll = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
-            long startTime = System.currentTimeMillis();
-            client.connect("127.0.0.1", 6666);
+            long start = System.currentTimeMillis();
+
+            client.connect("localhost", 6666);
 
             for (int j = 0; j < 1; j++) {
                 String response = client.sendMessage("message" + j);
@@ -44,12 +48,18 @@ public class EchoSocketClient {
 
             String responseExit = client.sendMessage("exit");
             client.disconnect();
-            long stopTime = System.currentTimeMillis();
-            log.info("client" + i + " exec time = " + (stopTime - startTime));
+
+            long stop = System.currentTimeMillis();
+            log.info("time = " + (stop - start));
         }
+        long endAll = System.currentTimeMillis();
+        log.info("timeAll - " + (endAll - startAll));
 
         client.connect("127.0.0.1", 6666);
         String responseExit = client.sendMessage("shutdown");
         client.disconnect();
+
+        long endAllAll = System.currentTimeMillis();
+        log.info("timeAllAll - " + (endAllAll - startAllAll));
     }
 }

@@ -18,9 +18,13 @@ public class EchoNettyClient {
         String host = "localhost";
         int port = 8888;
 
+        long startAllAll = System.currentTimeMillis();
+
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
+            long startAll = System.currentTimeMillis();
+
             for (int i = 0; i < 1000; i++) {
                 long start = System.currentTimeMillis();
 
@@ -46,10 +50,16 @@ public class EchoNettyClient {
 
                 long end = System.currentTimeMillis();
                 log.info("time - " + (end - start));
-
             }
+
+            long endAll = System.currentTimeMillis();
+            log.info("timeAll - " + (endAll - startAll));
+
         } finally {
             workerGroup.shutdownGracefully();
         }
+
+        long endAllAll = System.currentTimeMillis();
+        log.info("timeAllAll - " + (endAllAll - startAllAll));
     }
 }
