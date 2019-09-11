@@ -10,6 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>javafx/helloworld</module>
+
         <module>memory</module>
         <module>objectcopy</module>
 
