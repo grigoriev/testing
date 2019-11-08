@@ -2,18 +2,23 @@ package eu.grigoriev.webservice;
 
 import javax.jws.WebService;
 
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 @WebService(endpointInterface = "eu.grigoriev.webservice.NotificationService")
-@Log
+@Slf4j
 public class NotificationServiceImpl implements NotificationService {
     @Override
-    public String getServiceVersion() {
+    public String getVersion() {
         return "v1.0";
     }
 
     @Override
     public void notify(String name, String parameter, String type) {
         log.info("name = " + name + ", parameter = " + parameter + ", type = " + type);
+    }
+
+    @Override
+    public String fault() {
+        throw new NotificationServiceException("test exception");
     }
 }

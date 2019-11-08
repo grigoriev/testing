@@ -10,8 +10,11 @@ import javax.jws.soap.SOAPBinding.Style;
 public interface NotificationService {
 
     @WebMethod
-    String getServiceVersion();
+    String getVersion();
 
     @WebMethod
     void notify(String name, String parameter, String type);
+
+    @WebMethod
+    String fault();
 }
